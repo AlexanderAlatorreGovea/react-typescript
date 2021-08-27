@@ -1,9 +1,8 @@
 import React, { ReactNode, ReactElement, useState } from "react";
 
-import AddToList from './AddToList.tsx';
+import AddToList from "./AddToList";
 
 import "./App.css";
-
 
 const Heading = ({ title }: { title: string }) => {
   return <h1>{title}</h1>;
@@ -76,8 +75,9 @@ function App() {
     {
       name: "Kobe Bryant",
       age: 42,
-      url: "https://fullpresscoverage.com/wp-content/uploads/2020/01/101524695-457220551.jpg"
-    }
+      url:
+        "https://fullpresscoverage.com/wp-content/uploads/2020/01/101524695-457220551.jpg",
+    },
   ]);
   const changeNumber = () => {
     setNumber(10);
