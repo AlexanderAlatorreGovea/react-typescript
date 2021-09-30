@@ -63,9 +63,11 @@ function printOutput(value: any): void {
 }
 
 
-//Generics
+//Generics <>
+//With T we tell the arrays that the first and second
+//type are not just any value but are of the same type
 
-function insertAtBeginning(array: any[], value: any) {
+function insertAtBeginning<T>(array: T[], value: T) {
     const newArray = [value, ...array];
     return newArray
 }   
@@ -73,3 +75,5 @@ function insertAtBeginning(array: any[], value: any) {
 const demoArray = [1, 2, 3]
 
 const updatedArray = insertAtBeginning(demoArray, -1)
+
+export {}

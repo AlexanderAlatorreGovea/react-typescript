@@ -3,6 +3,9 @@ import React, { ReactNode, ReactElement, useState } from "react";
 import AddToList from "./AddToList";
 
 import "./App.css";
+import Todos from "./Componets/Todos";
+import Todo from "./models/todo";
+import NewTodo from "./Componets/NewTodo";
 
 const Heading = ({ title }: { title: string }) => {
   return <h1>{title}</h1>;
@@ -83,6 +86,26 @@ function App() {
     setNumber(10);
   };
 
+  /* CODE FOR NEW TODO HANDLER */
+
+  //Set the todo item to be an empty array with 
+  //Todo interface
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const onAddTodo = (text: string) => {
+    const newTodo = new Todo(text);
+ 
+    setTodos((prevTodos) => {
+      return [...prevTodos, newTodo]
+    })
+  }
+
+  const onRemoveTodo = (todoId: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== todoId)
+    })
+  }
+
   return (
     <div className="App">
       <Heading title="People invited to my party" />
@@ -92,10 +115,11 @@ function App() {
       <Container heading={"item"}>
         <p>hi there</p>
         <a href="">Hi again</a>
-      </Container>
-
+      </Container> 
       <List people={people} />
       <AddToList people={people} setPeople={setPeople} />
+      <NewTodo onAddTodo={onAddTodo}/>
+      <Todos items={todos} onRemoveTodo={onRemoveTodo} setTodos={setTodos} />
     </div>
   );
 }
